@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="si">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ArcadeHub 2025 | Premium Gaming</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -18,18 +17,18 @@
             color: #fff;
             min-height: 100vh;
             overflow-x: hidden;
+            padding: 20px;
         }
         
         header {
             background: rgba(0, 0, 0, 0.7);
             backdrop-filter: blur(10px);
-            padding: 20px 5%;
+            padding: 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            border-radius: 15px;
+            margin-bottom: 20px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
         }
         
@@ -56,272 +55,98 @@
             border-radius: 20px;
         }
         
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 30px;
-        }
-        
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-            position: relative;
-        }
-        
-        nav a:hover {
-            color: #4ecdc4;
-        }
-        
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: #4ecdc4;
-            transition: width 0.3s;
-        }
-        
-        nav a:hover::after {
-            width: 100%;
-        }
-        
-        .hero {
-            text-align: center;
-            padding: 80px 20px;
-            background: url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3') no-repeat center center/cover;
-            position: relative;
-        }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-        }
-        
-        .hero-content {
-            position: relative;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .hero h2 {
-            font-size: 48px;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
-        }
-        
-        .hero p {
-            font-size: 20px;
-            margin-bottom: 30px;
-            color: #e0e0e0;
-        }
-        
-        .cta-button {
-            display: inline-block;
-            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
-            color: white;
-            padding: 15px 40px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 18px;
-            transition: transform 0.3s, box-shadow 0.3s;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        }
-        
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-        }
-        
-        .games-section {
-            padding: 80px 5%;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 60px;
-            font-size: 36px;
-            position: relative;
-        }
-        
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
-            border-radius: 2px;
-        }
-        
-        .games-grid {
+        .games-container {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
         }
         
-        .game-card {
+        .game-box {
             background: rgba(255, 255, 255, 0.05);
             border-radius: 15px;
-            overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s;
+            padding: 20px;
+            text-align: center;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
         
-        .game-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-        }
-        
-        .game-image {
-            height: 200px;
-            background-color: #2c3e50;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 50px;
+        .game-title {
             color: #4ecdc4;
-        }
-        
-        .game-content {
-            padding: 20px;
-        }
-        
-        .game-content h3 {
-            font-size: 20px;
-            margin-bottom: 10px;
-            color: #4ecdc4;
-        }
-        
-        .game-content p {
-            color: #b0b0b0;
             margin-bottom: 15px;
-            font-size: 14px;
+            font-size: 20px;
         }
         
-        .play-btn {
-            display: inline-block;
+        .game-canvas {
+            background: #2c3e50;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            display: block;
+            width: 100%;
+        }
+        
+        .game-controls {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .game-btn {
             background: #4ecdc4;
             color: white;
-            padding: 8px 20px;
+            border: none;
+            padding: 8px 15px;
             border-radius: 20px;
-            text-decoration: none;
+            cursor: pointer;
             font-weight: 500;
-            font-size: 14px;
             transition: background 0.3s;
         }
         
-        .play-btn:hover {
+        .game-btn:hover {
             background: #ff6b6b;
         }
         
-        .features {
-            padding: 80px 5%;
-            background: rgba(0, 0, 0, 0.3);
+        .game-stats {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 10px;
         }
         
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 30px;
-        }
-        
-        .feature-card {
-            text-align: center;
-            padding: 30px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-            transition: transform 0.3s;
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .feature-icon {
-            font-size: 40px;
-            margin-bottom: 20px;
-            color: #ff6b6b;
-        }
-        
-        .feature-card h3 {
-            margin-bottom: 15px;
-            color: #4ecdc4;
-        }
-        
-        .feature-card p {
-            color: #b0b0b0;
+        .stat {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 5px 10px;
+            border-radius: 10px;
+            font-size: 14px;
         }
         
         footer {
             background: rgba(0, 0, 0, 0.8);
-            padding: 50px 5% 20px;
+            padding: 20px;
             text-align: center;
+            border-radius: 15px;
+            margin-top: 30px;
         }
         
         .footer-content {
             max-width: 1000px;
             margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            text-align: left;
         }
         
-        .footer-column h3 {
+        .footer-content h3 {
             color: #4ecdc4;
-            margin-bottom: 20px;
-            font-size: 18px;
+            margin-bottom: 15px;
         }
         
-        .footer-column p, .footer-column a {
-            color: #b0b0b0;
-            margin-bottom: 10px;
+        .email-contact {
+            color: #ff6b6b;
+            font-weight: 500;
+            margin: 10px 0;
             display: block;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        .footer-column a:hover {
-            color: #4ecdc4;
-        }
-        
-        .social-icons {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-        
-        .social-icons a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            transition: background 0.3s, transform 0.3s;
-        }
-        
-        .social-icons a:hover {
-            background: #4ecdc4;
-            transform: translateY(-3px);
         }
         
         .copyright {
-            margin-top: 40px;
-            padding-top: 20px;
+            margin-top: 20px;
+            padding-top: 15px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             color: #b0b0b0;
             font-size: 14px;
@@ -332,21 +157,16 @@
             font-weight: bold;
         }
         
-        .email-contact {
-            color: #4ecdc4;
-            font-weight: 500;
+        .instructions {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            font-size: 14px;
         }
         
         @media (max-width: 768px) {
-            nav ul {
-                gap: 15px;
-            }
-            
-            .hero h2 {
-                font-size: 36px;
-            }
-            
-            .games-grid, .features-grid {
+            .games-container {
                 grid-template-columns: 1fr;
             }
         }
@@ -358,250 +178,597 @@
             <h1>ArcadeHub</h1>
             <span>2025</span>
         </div>
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#games">Games</a></li>
-                <li><a href="#features">Features</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
     </header>
 
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <h2>Premium Arcade Experience</h2>
-            <p>Play 10 exclusive arcade games in one place. Anytime, anywhere!</p>
-            <a href="#games" class="cta-button">Play Now</a>
-        </div>
-    </section>
-
-    <section class="games-section" id="games">
-        <h2 class="section-title">Our Games</h2>
-        <div class="games-grid">
-            <!-- Game 1 -->
-            <div class="game-card">
-                <div class="game-image">
-                    <i class="fas fa-puzzle-piece"></i>
-                </div>
-                <div class="game-content">
-                    <h3>Block Puzzle</h3>
-                    <p>Arrange the blocks to complete lines and score points in this addictive puzzle game.</p>
-                    <a href="#" class="play-btn">Play Now</a>
-                </div>
+    <div class="games-container">
+        <!-- Snake Game -->
+        <div class="game-box">
+            <h3 class="game-title">Snake Game</h3>
+            <canvas id="snake-game" class="game-canvas" width="300" height="300"></canvas>
+            <div class="game-controls">
+                <button class="game-btn" id="snake-start">Start</button>
+                <button class="game-btn" id="snake-pause">Pause</button>
+                <button class="game-btn" id="snake-reset">Reset</button>
             </div>
-            
-            <!-- Game 2 -->
-            <div class="game-card">
-                <div class="game-image">
-                    <i class="fas fa-running"></i>
-                </div>
-                <div class="game-content">
-                    <h3>Endless Runner</h3>
-                    <p>Jump, slide and dash through an endless obstacle course. How far can you go?</p>
-                    <a href="#" class="play-btn">Play Now</a>
-                </div>
+            <div class="game-stats">
+                <div class="stat">Score: <span id="snake-score">0</span></div>
+                <div class="stat">High: <span id="snake-high">0</span></div>
             </div>
-            
-            <!-- Game 3 -->
-            <div class="game-card">
-                <div class="game-image">
-                    <i class="fas fa-chess"></i>
-                </div>
-                <div class="game-content">
-                    <h3>Strategy Challenge</h3>
-                    <p>Test your tactical skills in this turn-based strategy game against AI opponents.</p>
-                    <a href="#" class="play-btn">Play Now</a>
-                </div>
-            </div>
-            
-            <!-- Game 4 -->
-            <div class="game-card">
-                <div class="game-image">
-                    <i class="fas fa-basketball-ball"></i>
-                </div>
-                <div class="game-content">
-                    <h3>Basketball Shootout</h3>
-                    <p>Swipe to shoot hoops and beat the clock in this exciting basketball challenge.</p>
-                    <a href="#" class="play-btn">Play Now</a>
-                </div>
-            </div>
-            
-            <!-- Game 5 -->
-            <div class="game-card">
-                <div class="game-image">
-                    <i class="fas fa-memory"></i>
-                </div>
-                <div class="game-content">
-                    <h3>Memory Match</h3>
-                    <p>Find all matching pairs in the least amount of time and moves possible.</p>
-                    <a href="#" class="play-btn">Play Now</a>
-                </div>
-            </div>
-            
-            <!-- Game 6 -->
-            <div class="game-card">
-                <div class="game-image">
-                    <i class="fas fa-snake"></i>
-                </div>
-                <div class="game-content">
-                    <h3>Snake Classic</h3>
-                    <p>The classic snake game reimagined with modern graphics and power-ups.</p>
-                    <a href="#" class="play-btn">Play Now</a>
-                </div>
-            </div>
-            
-            <!-- Game 7 -->
-            <div class="game-card">
-                <div class="game-image">
-                    <i class="fas fa-ghost"></i>
-                </div>
-                <div class="game-content">
-                    <h3>Ghost Hunter</h3>
-                    <p>Navigate through a haunted maze and capture all the ghosts before time runs out.</p>
-                    <a href="#" class="play-btn">Play Now</a>
-                </div>
-            </div>
-            
-            <!-- Game 8 -->
-            <div class="game-card">
-                <div class="game-image">
-                    <i class="fas fa-car"></i>
-                </div>
-                <div class="game-content">
-                    <h3>Racing Speedway</h3>
-                    <p>Race against AI opponents on challenging tracks and upgrade your car.</p>
-                    <a href="#" class="play-btn">Play Now</a>
-                </div>
-            </div>
-            
-            <!-- Game 9 -->
-            <div class="game-card">
-                <div class="game-image">
-                    <i class="fas fa-ring"></i>
-                </div>
-                <div class="game-content">
-                    <h3>Bubble Shooter</h3>
-                    <p>Match colored bubbles to clear the board in this addictive bubble shooter game.</p>
-                    <a href="#" class="play-btn">Play Now</a>
-                </div>
-            </div>
-            
-            <!-- Game 10 -->
-            <div class="game-card">
-                <div class="game-image">
-                    <i class="fas fa-dragon"></i>
-                </div>
-                <div class="game-content">
-                    <h3>Dragon's Journey</h3>
-                    <p>Help the dragon collect gems and avoid obstacles in this adventure platformer.</p>
-                    <a href="#" class="play-btn">Play Now</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="features" id="features">
-        <h2 class="section-title">Premium Features</h2>
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-trophy"></i>
-                </div>
-                <h3>Leaderboards</h3>
-                <p>Compete with players worldwide and climb to the top of our global leaderboards.</p>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-cloud"></i>
-                </div>
-                <h3>Cloud Saves</h3>
-                <p>Your progress is automatically saved in the cloud. Play on any device seamlessly.</p>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-medal"></i>
-                </div>
-                <h3>Achievements</h3>
-                <p>Unlock hundreds of achievements across all games and show off your skills.</p>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-users"></i>
-                </div>
-                <h3>Multiplayer</h3>
-                <p>Challenge your friends in real-time multiplayer matches across several games.</p>
-            </div>
-        </div>
-    </section>
-
-    <footer id="contact">
-        <div class="footer-content">
-            <div class="footer-column">
-                <h3>About ArcadeHub</h3>
-                <p>ArcadeHub offers a premium collection of classic and original arcade games, all in one place. Established in <span class="year-highlight">2025</span>, we're committed to delivering the best gaming experience.</p>
-            </div>
-            
-            <div class="footer-column">
-                <h3>Quick Links</h3>
-                <a href="#home">Home</a>
-                <a href="#games">Games</a>
-                <a href="#features">Features</a>
-                <a href="#contact">Contact</a>
-            </div>
-            
-            <div class="footer-column">
-                <h3>Contact Us</h3>
-                <p>Email: <span class="email-contact">mgrnavindudilhan@gmail.com</span></p>
-                <p>Phone: +94 77 123 4567</p>
-                <div class="social-icons">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
-                </div>
+            <div class="instructions">
+                Use arrow keys to control the snake. Eat food to grow and score points!
             </div>
         </div>
         
-        <div class="copyright">
-            <p>&copy; <span class="year-highlight">2025</span> ArcadeHub. All rights reserved. Designed with ❤️ for arcade game enthusiasts.</p>
+        <!-- Memory Game -->
+        <div class="game-box">
+            <h3 class="game-title">Memory Game</h3>
+            <div id="memory-game" class="game-canvas" style="height: 300px; display: grid; grid-template-columns: repeat(4, 1fr); grid-gap: 5px; padding: 10px;"></div>
+            <div class="game-controls">
+                <button class="game-btn" id="memory-start">Start</button>
+                <button class="game-btn" id="memory-reset">Reset</button>
+            </div>
+            <div class="game-stats">
+                <div class="stat">Moves: <span id="memory-moves">0</span></div>
+                <div class="stat">Pairs: <span id="memory-pairs">0</span>/8</div>
+            </div>
+            <div class="instructions">
+                Find all matching pairs. Click on cards to flip them and find matches.
+            </div>
+        </div>
+        
+        <!-- Reaction Tester -->
+        <div class="game-box">
+            <h3 class="game-title">Reaction Tester</h3>
+            <div id="reaction-game" class="game-canvas" style="height: 300px; display: flex; align-items: center; justify-content: center; font-size: 24px;">
+                Click Start to begin!
+            </div>
+            <div class="game-controls">
+                <button class="game-btn" id="reaction-start">Start</button>
+                <button class="game-btn" id="reaction-reset">Reset</button>
+            </div>
+            <div class="game-stats">
+                <div class="stat">Time: <span id="reaction-time">0</span>ms</div>
+                <div class="stat">Best: <span id="reaction-best">0</span>ms</div>
+            </div>
+            <div class="instructions">
+                Wait for the color to change to green, then click as fast as you can!
+            </div>
+        </div>
+        
+        <!-- Whack-a-Mole -->
+        <div class="game-box">
+            <h3 class="game-title">Whack-a-Mole</h3>
+            <div id="mole-game" class="game-canvas" style="height: 300px; display: grid; grid-template-columns: repeat(3, 1fr); grid-gap: 5px; padding: 10px;"></div>
+            <div class="game-controls">
+                <button class="game-btn" id="mole-start">Start</button>
+                <button class="game-btn" id="mole-stop">Stop</button>
+            </div>
+            <div class="game-stats">
+                <div class="stat">Score: <span id="mole-score">0</span></div>
+                <div class="stat">Time: <span id="mole-time">30</span>s</div>
+            </div>
+            <div class="instructions">
+                Click on the moles when they appear to score points. Be quick!
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <h3>Contact Us</h3>
+            <span class="email-contact">mgrnavindudilhan@gmail.com</span>
+            <div class="copyright">
+                <p>&copy; <span class="year-highlight">2025</span> ArcadeHub. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 
     <script>
-        // Simple animation for page elements
+        // Snake Game Implementation
         document.addEventListener('DOMContentLoaded', function() {
-            const ctaButton = document.querySelector('.cta-button');
+            // Snake Game
+            const snakeCanvas = document.getElementById('snake-game');
+            const snakeCtx = snakeCanvas.getContext('2d');
+            const snakeScore = document.getElementById('snake-score');
+            const snakeHigh = document.getElementById('snake-high');
+            const snakeStart = document.getElementById('snake-start');
+            const snakePause = document.getElementById('snake-pause');
+            const snakeReset = document.getElementById('snake-reset');
             
-            // Add pulse animation to CTA button
-            setInterval(() => {
-                ctaButton.style.transform = 'scale(1.05)';
-                setTimeout(() => {
-                    ctaButton.style.transform = 'scale(1)';
-                }, 500);
-            }, 2000);
+            const gridSize = 15;
+            const gridWidth = snakeCanvas.width / gridSize;
+            const gridHeight = snakeCanvas.height / gridSize;
             
-            // Animate game cards on scroll
-            const gameCards = document.querySelectorAll('.game-card');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = 1;
-                        entry.target.style.transform = 'translateY(0)';
+            let snake = [];
+            let food = {};
+            let direction = 'right';
+            let nextDirection = 'right';
+            let score = 0;
+            let highScore = 0;
+            let gameRunning = false;
+            let gameInterval;
+            
+            function initSnake() {
+                snake = [{x: 5, y: 5}, {x: 4, y: 5}, {x: 3, y: 5}];
+                generateFood();
+                score = 0;
+                snakeScore.textContent = score;
+            }
+            
+            function generateFood() {
+                food = {
+                    x: Math.floor(Math.random() * gridWidth),
+                    y: Math.floor(Math.random() * gridHeight)
+                };
+                
+                for (let i = 0; i < snake.length; i++) {
+                    if (snake[i].x === food.x && snake[i].y === food.y) {
+                        generateFood();
+                        break;
+                    }
+                }
+            }
+            
+            function drawSnake() {
+                snakeCtx.clearRect(0, 0, snakeCanvas.width, snakeCanvas.height);
+                
+                // Draw food
+                snakeCtx.fillStyle = '#ff6b6b';
+                snakeCtx.fillRect(food.x * gridSize, food.y * gridSize, gridSize, gridSize);
+                
+                // Draw snake
+                snake.forEach((segment, index) => {
+                    snakeCtx.fillStyle = index === 0 ? '#4ecdc4' : '#45b7d1';
+                    snakeCtx.fillRect(segment.x * gridSize, segment.y * gridSize, gridSize, gridSize);
+                    
+                    // Draw eyes on head
+                    if (index === 0) {
+                        snakeCtx.fillStyle = 'white';
+                        if (direction === 'right') {
+                            snakeCtx.fillRect(segment.x * gridSize + 10, segment.y * gridSize + 3, 3, 3);
+                            snakeCtx.fillRect(segment.x * gridSize + 10, segment.y * gridSize + 10, 3, 3);
+                        } else if (direction === 'left') {
+                            snakeCtx.fillRect(segment.x * gridSize + 2, segment.y * gridSize + 3, 3, 3);
+                            snakeCtx.fillRect(segment.x * gridSize + 2, segment.y * gridSize + 10, 3, 3);
+                        } else if (direction === 'up') {
+                            snakeCtx.fillRect(segment.x * gridSize + 3, segment.y * gridSize + 2, 3, 3);
+                            snakeCtx.fillRect(segment.x * gridSize + 10, segment.y * gridSize + 2, 3, 3);
+                        } else if (direction === 'down') {
+                            snakeCtx.fillRect(segment.x * gridSize + 3, segment.y * gridSize + 10, 3, 3);
+                            snakeCtx.fillRect(segment.x * gridSize + 10, segment.y * gridSize + 10, 3, 3);
+                        }
                     }
                 });
-            }, { threshold: 0.1 });
+            }
             
-            gameCards.forEach(card => {
-                card.style.opacity = 0;
-                card.style.transform = 'translateY(50px)';
-                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-                observer.observe(card);
+            function moveSnake() {
+                direction = nextDirection;
+                
+                const head = {x: snake[0].x, y: snake[0].y};
+                
+                switch(direction) {
+                    case 'right': head.x++; break;
+                    case 'left': head.x--; break;
+                    case 'up': head.y--; break;
+                    case 'down': head.y++; break;
+                }
+                
+                // Check for collision with walls
+                if (head.x < 0 || head.x >= gridWidth || head.y < 0 || head.y >= gridHeight) {
+                    gameOver();
+                    return;
+                }
+                
+                // Check for collision with self
+                for (let i = 0; i < snake.length; i++) {
+                    if (snake[i].x === head.x && snake[i].y === head.y) {
+                        gameOver();
+                        return;
+                    }
+                }
+                
+                snake.unshift(head);
+                
+                // Check if food eaten
+                if (head.x === food.x && head.y === food.y) {
+                    score++;
+                    snakeScore.textContent = score;
+                    generateFood();
+                } else {
+                    snake.pop();
+                }
+                
+                drawSnake();
+            }
+            
+            function gameOver() {
+                clearInterval(gameInterval);
+                gameRunning = false;
+                snakeStart.textContent = 'Start';
+                
+                if (score > highScore) {
+                    highScore = score;
+                    snakeHigh.textContent = highScore;
+                }
+                
+                alert('Game Over! Your score: ' + score);
+            }
+            
+            function startSnakeGame() {
+                if (gameRunning) {
+                    clearInterval(gameInterval);
+                    gameRunning = false;
+                    snakeStart.textContent = 'Start';
+                } else {
+                    if (snake.length === 0) initSnake();
+                    gameInterval = setInterval(moveSnake, 150);
+                    gameRunning = true;
+                    snakeStart.textContent = 'Restart';
+                }
+            }
+            
+            function pauseSnakeGame() {
+                if (gameRunning) {
+                    clearInterval(gameInterval);
+                    gameRunning = false;
+                    snakeStart.textContent = 'Resume';
+                }
+            }
+            
+            function resetSnakeGame() {
+                clearInterval(gameInterval);
+                gameRunning = false;
+                initSnake();
+                drawSnake();
+                snakeStart.textContent = 'Start';
+            }
+            
+            // Keyboard controls for snake
+            document.addEventListener('keydown', function(e) {
+                switch(e.key) {
+                    case 'ArrowUp': if (direction !== 'down') nextDirection = 'up'; break;
+                    case 'ArrowDown': if (direction !== 'up') nextDirection = 'down'; break;
+                    case 'ArrowLeft': if (direction !== 'right') nextDirection = 'left'; break;
+                    case 'ArrowRight': if (direction !== 'left') nextDirection = 'right'; break;
+                }
             });
+            
+            snakeStart.addEventListener('click', startSnakeGame);
+            snakePause.addEventListener('click', pauseSnakeGame);
+            snakeReset.addEventListener('click', resetSnakeGame);
+            
+            // Initialize snake game
+            initSnake();
+            drawSnake();
+            
+            // Memory Game Implementation
+            const memoryGame = document.getElementById('memory-game');
+            const memoryMoves = document.getElementById('memory-moves');
+            const memoryPairs = document.getElementById('memory-pairs');
+            const memoryStart = document.getElementById('memory-start');
+            const memoryReset = document.getElementById('memory-reset');
+            
+            let cards = [];
+            let flippedCards = [];
+            let matchedPairs = 0;
+            let moves = 0;
+            let memoryGameStarted = false;
+            
+            const symbols = ['🍎', '🍌', '🍒', '🍓', '🍊', '🍐', '🍋', '🍉'];
+            
+            function initMemoryGame() {
+                memoryGame.innerHTML = '';
+                flippedCards = [];
+                matchedPairs = 0;
+                moves = 0;
+                memoryMoves.textContent = moves;
+                memoryPairs.textContent = matchedPairs;
+                
+                // Duplicate symbols to create pairs
+                let gameSymbols = [...symbols, ...symbols];
+                
+                // Shuffle symbols
+                gameSymbols.sort(() => Math.random() - 0.5);
+                
+                // Create cards
+                cards = gameSymbols.map((symbol, index) => {
+                    return { id: index, symbol: symbol, flipped: false, matched: false };
+                });
+                
+                // Render cards
+                cards.forEach(card => {
+                    const cardElement = document.createElement('div');
+                    cardElement.className = 'memory-card';
+                    cardElement.dataset.id = card.id;
+                    cardElement.innerHTML = `
+                        <div class="card-front">?</div>
+                        <div class="card-back">${card.symbol}</div>
+                    `;
+                    cardElement.style.height = '60px';
+                    cardElement.style.display = 'flex';
+                    cardElement.style.alignItems = 'center';
+                    cardElement.style.justifyContent = 'center';
+                    cardElement.style.fontSize = '24px';
+                    cardElement.style.backgroundColor = '#4ecdc4';
+                    cardElement.style.borderRadius = '8px';
+                    cardElement.style.cursor = 'pointer';
+                    cardElement.style.position = 'relative';
+                    cardElement.style.transformStyle = 'preserve-3d';
+                    cardElement.style.transition = 'transform 0.5s';
+                    
+                    const cardFront = cardElement.querySelector('.card-front');
+                    const cardBack = cardElement.querySelector('.card-back');
+                    
+                    cardFront.style.position = 'absolute';
+                    cardFront.style.width = '100%';
+                    cardFront.style.height = '100%';
+                    cardFront.style.backfaceVisibility = 'hidden';
+                    cardFront.style.display = 'flex';
+                    cardFront.style.alignItems = 'center';
+                    cardFront.style.justifyContent = 'center';
+                    cardFront.style.backgroundColor = '#45b7d1';
+                    cardFront.style.borderRadius = '8px';
+                    
+                    cardBack.style.position = 'absolute';
+                    cardBack.style.width = '100%';
+                    cardBack.style.height = '100%';
+                    cardBack.style.backfaceVisibility = 'hidden';
+                    cardBack.style.display = 'flex';
+                    cardBack.style.alignItems = 'center';
+                    cardBack.style.justifyContent = 'center';
+                    cardBack.style.backgroundColor = '#ff6b6b';
+                    cardBack.style.borderRadius = '8px';
+                    cardBack.style.transform = 'rotateY(180deg)';
+                    
+                    cardElement.addEventListener('click', () => flipCard(cardElement, card));
+                    memoryGame.appendChild(cardElement);
+                });
+            }
+            
+            function flipCard(cardElement, card) {
+                if (!memoryGameStarted || card.flipped || flippedCards.length === 2) return;
+                
+                card.flipped = true;
+                cardElement.style.transform = 'rotateY(180deg)';
+                flippedCards.push(card);
+                
+                if (flippedCards.length === 2) {
+                    moves++;
+                    memoryMoves.textContent = moves;
+                    
+                    setTimeout(checkMatch, 700);
+                }
+            }
+            
+            function checkMatch() {
+                const [card1, card2] = flippedCards;
+                
+                if (card1.symbol === card2.symbol) {
+                    card1.matched = true;
+                    card2.matched = true;
+                    matchedPairs++;
+                    memoryPairs.textContent = matchedPairs;
+                    
+                    if (matchedPairs === symbols.length) {
+                        setTimeout(() => {
+                            alert(`Congratulations! You won in ${moves} moves!`);
+                        }, 500);
+                    }
+                } else {
+                    card1.flipped = false;
+                    card2.flipped = false;
+                    
+                    const card1Element = document.querySelector(`.memory-card[data-id="${card1.id}"]`);
+                    const card2Element = document.querySelector(`.memory-card[data-id="${card2.id}"]`);
+                    
+                    card1Element.style.transform = 'rotateY(0deg)';
+                    card2Element.style.transform = 'rotateY(0deg)';
+                }
+                
+                flippedCards = [];
+            }
+            
+            memoryStart.addEventListener('click', function() {
+                if (!memoryGameStarted) {
+                    memoryGameStarted = true;
+                    memoryStart.textContent = 'Playing...';
+                    this.disabled = true;
+                }
+            });
+            
+            memoryReset.addEventListener('click', function() {
+                memoryGameStarted = false;
+                memoryStart.textContent = 'Start';
+                memoryStart.disabled = false;
+                initMemoryGame();
+            });
+            
+            // Initialize memory game
+            initMemoryGame();
+            
+            // Reaction Tester Game
+            const reactionGame = document.getElementById('reaction-game');
+            const reactionTime = document.getElementById('reaction-time');
+            const reactionBest = document.getElementById('reaction-best');
+            const reactionStart = document.getElementById('reaction-start');
+            const reactionReset = document.getElementById('reaction-reset');
+            
+            let reactionStartTime;
+            let reactionTimeout;
+            let bestTime = 0;
+            let reactionGameActive = false;
+            
+            reactionStart.addEventListener('click', function() {
+                if (reactionGameActive) return;
+                
+                reactionGameActive = true;
+                reactionGame.textContent = "Wait for green...";
+                reactionGame.style.backgroundColor = "#ff6b6b";
+                
+                // Random delay between 2-5 seconds
+                const delay = Math.floor(Math.random() * 3000) + 2000;
+                
+                reactionTimeout = setTimeout(() => {
+                    reactionGame.textContent = "CLICK NOW!";
+                    reactionGame.style.backgroundColor = "#4ecdc4";
+                    reactionStartTime = new Date().getTime();
+                }, delay);
+            });
+            
+            reactionGame.addEventListener('click', function() {
+                if (!reactionGameActive || !reactionStartTime) return;
+                
+                const endTime = new Date().getTime();
+                const timeTaken = endTime - reactionStartTime;
+                
+                reactionTime.textContent = timeTaken;
+                
+                if (bestTime === 0 || timeTaken < bestTime) {
+                    bestTime = timeTaken;
+                    reactionBest.textContent = bestTime;
+                }
+                
+                reactionGame.textContent = "Click Start to play again!";
+                reactionGame.style.backgroundColor = "#2c3e50";
+                reactionGameActive = false;
+                reactionStartTime = null;
+                clearTimeout(reactionTimeout);
+            });
+            
+            reactionReset.addEventListener('click', function() {
+                reactionTime.textContent = "0";
+                bestTime = 0;
+                reactionBest.textContent = "0";
+                reactionGame.textContent = "Click Start to begin!";
+                reactionGame.style.backgroundColor = "#2c3e50";
+                reactionGameActive = false;
+                reactionStartTime = null;
+                clearTimeout(reactionTimeout);
+            });
+            
+            // Whack-a-Mole Game Implementation
+            const moleGame = document.getElementById('mole-game');
+            const moleScore = document.getElementById('mole-score');
+            const moleTime = document.getElementById('mole-time');
+            const moleStart = document.getElementById('mole-start');
+            const moleStop = document.getElementById('mole-stop');
+            
+            let moleInterval;
+            let moleGameScore = 0;
+            let moleGameTime = 30;
+            let moleGameActive = false;
+            let moleTimer;
+            
+            function initMoleGame() {
+                moleGame.innerHTML = '';
+                for (let i = 0; i < 9; i++) {
+                    const hole = document.createElement('div');
+                    hole.className = 'mole-hole';
+                    hole.dataset.index = i;
+                    hole.style.height = '80px';
+                    hole.style.backgroundColor = '#8c7b6b';
+                    hole.style.borderRadius = '50%';
+                    hole.style.display = 'flex';
+                    hole.style.alignItems = 'center';
+                    hole.style.justifyContent = 'center';
+                    hole.style.cursor = 'pointer';
+                    hole.style.position = 'relative';
+                    hole.style.overflow = 'hidden';
+                    
+                    const mole = document.createElement('div');
+                    mole.className = 'mole';
+                    mole.style.width = '50px';
+                    mole.style.height = '60px';
+                    mole.style.backgroundColor = '#795548';
+                    mole.style.borderRadius = '50% 50% 40% 40%';
+                    mole.style.position = 'absolute';
+                    mole.style.bottom = '-60px';
+                    mole.style.transition = 'bottom 0.3s';
+                    
+                    hole.appendChild(mole);
+                    hole.addEventListener('click', whackMole);
+                    moleGame.appendChild(hole);
+                }
+            }
+            
+            function startMoleGame() {
+                if (moleGameActive) return;
+                
+                moleGameActive = true;
+                moleGameScore = 0;
+                moleGameTime = 30;
+                moleScore.textContent = moleGameScore;
+                moleTime.textContent = moleGameTime;
+                
+                // Start timer
+                moleTimer = setInterval(() => {
+                    moleGameTime--;
+                    moleTime.textContent = moleGameTime;
+                    
+                    if (moleGameTime <= 0) {
+                        stopMoleGame();
+                        alert(`Game Over! Your score: ${moleGameScore}`);
+                    }
+                }, 1000);
+                
+                // Start popping moles
+                moleInterval = setInterval(popRandomMole, 800);
+            }
+            
+            function popRandomMole() {
+                if (!moleGameActive) return;
+                
+                const holes = document.querySelectorAll('.mole-hole');
+                const randomIndex = Math.floor(Math.random() * 9);
+                const randomHole = holes[randomIndex];
+                const mole = randomHole.querySelector('.mole');
+                
+                // Pop up the mole
+                mole.style.bottom = '0';
+                
+                // Hide the mole after a short time
+                setTimeout(() => {
+                    if (mole.style.bottom === '0px') {
+                        mole.style.bottom = '-60px';
+                    }
+                }, 800);
+            }
+            
+            function whackMole(e) {
+                if (!moleGameActive) return;
+                
+                const mole = e.currentTarget.querySelector('.mole');
+                if (mole.style.bottom === '0px') {
+                    moleGameScore++;
+                    moleScore.textContent = moleGameScore;
+                    mole.style.bottom = '-60px';
+                    
+                    // Add visual feedback
+                    e.currentTarget.style.backgroundColor = '#4ecdc4';
+                    setTimeout(() => {
+                        e.currentTarget.style.backgroundColor = '#8c7b6b';
+                    }, 200);
+                }
+            }
+            
+            function stopMoleGame() {
+                moleGameActive = false;
+                clearInterval(moleInterval);
+                clearInterval(moleTimer);
+                
+                // Reset all moles
+                const moles = document.querySelectorAll('.mole');
+                moles.forEach(mole => {
+                    mole.style.bottom = '-60px';
+                });
+            }
+            
+            moleStart.addEventListener('click', startMoleGame);
+            moleStop.addEventListener('click', stopMoleGame);
+            
+            // Initialize mole game
+            initMoleGame();
         });
     </script>
 </body>
-      </html>
+    </html>
